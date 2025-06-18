@@ -1,0 +1,21 @@
+{
+  "name": "electronics-store-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "http-errors": "^2.0.0",
+    "mongoose": "^8.16.0"
+  }
+}

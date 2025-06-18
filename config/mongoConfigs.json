@@ -1,0 +1,19 @@
+{
+  "development": {
+    "host": "127.0.0.1",
+    "port": 27017,
+    "dbName": "electronics_db_development"
+  },
+  "test": {
+    "host": "127.0.0.1",
+    "port": 27017,
+    "dbName": "electronics_db_test"
+  },
+  "production": {
+    "host": "127.0.0.1",
+    "port": 27017,
+    "dbName": "electronics_db_production",
+    "user": "",
+    "password": ""
+  }
+}
