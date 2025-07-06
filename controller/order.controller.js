@@ -31,7 +31,16 @@ module.exports.getOrderById = async (req, res, next) => {
   const { orderId } = req.params;
 
   try {
-    const foundOrder = await Order.findById(orderId);
+    const foundOrder = await Order.findById(orderId)
+      .populate({
+        path: 'customer',
+        select: '-__v -password', 
+      })
+      .populate({
+        path: 'items.product',
+        select: '-__v -reviews', 
+      })
+      .select('-__v');
     if (!foundOrder) {
       return next(createHttpError(404, 'Order Not Found'));
     }

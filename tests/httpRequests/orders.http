@@ -1,0 +1,31 @@
+### 201
+POST http://localhost:5000/api/orders
+Content-Type: application/json
+
+{
+  "customer": "685b995c0f1d91b7245f951a",
+  "items": [
+    {
+      "product": "686aabe32534f5b1938b6c61",
+      "quantity": 2
+    }
+  ],
+  "totalPrice": 199.99
+}
+
+###200
+GET http://localhost:5000/api/orders?limit=5&skip=0
+
+### 200
+GET http://localhost:5000/api/orders/686ab4b8685cc77e62a1ffc4
+
+### 200
+PATCH http://localhost:5000/api/orders/686ab4b8685cc77e62a1ffc4
+Content-Type: application/json
+
+{
+  "status": "delivered"
+}
+
+### 204
+DELETE http://localhost:5000/api/orders/686ab5c94cf7aef20705301b
