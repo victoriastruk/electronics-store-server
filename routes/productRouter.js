@@ -18,8 +18,4 @@ productRouter
   .route('/:productId/customers/:customerId/reviews')
   .post(productController.createProductReview);
 
-productRouter
-  // .route('/:productId/reviews')
-  // .get(productController.getReviewsByIdProduct);
-
 module.exports = productRouter;

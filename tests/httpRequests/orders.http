@@ -6,11 +6,10 @@ Content-Type: application/json
   "customer": "685b995c0f1d91b7245f951a",
   "items": [
     {
-      "product": "686aabe32534f5b1938b6c61",
+      "product": "686ac0b103f22e7fa5a9d03a",
       "quantity": 2
     }
-  ],
-  "totalPrice": 199.99
+  ]
 }
 
 ### 422 
@@ -23,8 +22,7 @@ Content-Type: application/json
       "product": "686aabe32534f5b1938b6c61",
       "quantity": 2
     }
-  ],
-  "total": 199.99
+  ]
 }
 
 ###200
