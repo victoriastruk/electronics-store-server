@@ -1,0 +1,50 @@
+### 201
+
+POST http://localhost:5000/api/products
+Content-Type: application/json
+
+{
+  "name": "Samsung",
+  "description": "Galaxy S23",
+  "category": "headphones",
+  "price": 1,
+  "stock": 6,
+  "discount": {
+    "percentage": 3,
+    "validUntil": "2025-03-01"
+  }
+}
+
+### 200
+GET http://localhost:5000/api/products
+
+### 200
+
+GET http://localhost:5000/api/products?category=cell phones&sort=price&limit=5&page=1
+
+### 200
+GET http://localhost:5000/api/products/685c472ba19be9416575e62d
+
+### 200 
+PATCH http://localhost:5000/api/products/6859393d7c1a41c5ee238483
+Content-Type: application/json
+
+{
+  "description": "Galaxy S233"
+}
+
+### 204 
+
+DELETE http://localhost:5000/api/products/6859393d7c1a41c5ee238483
+
+
+### 201 /api/products/:productId/customers/:customerId/reviews
+
+POST http://localhost:5000/api/products/685c472ba19be9416575e62d/customers/685c475ba19be9416575e62f/reviews
+Content-Type: application/json
+
+{
+  "rating": 5,
+  "comment": "This is very good product!"
+}
+

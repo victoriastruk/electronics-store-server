@@ -1,0 +1,40 @@
+### 201 
+
+POST http://localhost:5000/api/customers
+Content-Type: application/json
+
+{
+   "name": "Eva",
+   "email": "eva30@gmail.com",
+   "password": "12345",
+   "address": {
+      "street": "Shevchenka 10",
+      "city": "Lviv",
+      "country": "Ukraine"
+   }
+}
+
+### 200
+GET http://localhost:5000/api/customers
+
+### 200
+GET http://localhost:5000/api/customers/685b995c0f1d91b7245f951a
+
+### 200
+
+PATCH http://localhost:5000/api/customers/685b995c0f1d91b7245f951a
+Content-Type: application/json
+
+{
+   "email": "eva8@gmail.com",
+   "address": {
+      "street": "Shevchenka 12"
+   }
+}
+
+### 204 
+DELETE  http://localhost:5000/api/customers/685b956124f3113734d5bc17
+
+### 201
+
+POST http://localhost:5000/api/customers/685b995c0f1d91b7245f951a/wishlist/

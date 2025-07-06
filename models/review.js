@@ -12,7 +12,10 @@ const reviewSchema = new Schema({
   },
   rating: Number,
   comment: String,
-  date: Date,
+  date: {
+    type: Date,
+    default: new Date(),
+  },
 });
 
 const Review = mongoose.model('Review', reviewSchema);

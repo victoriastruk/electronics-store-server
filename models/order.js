@@ -19,7 +19,7 @@ const orderSchema = new Schema({
   total: Number,
   status: {
     type: String,
-    enum: ['new', 'processing', 'shipped', 'delivrerd'],
+    enum: ['new', 'processing', 'shipped', 'delivered'],
     default: 'new',
   },
   orderDate: Date,
