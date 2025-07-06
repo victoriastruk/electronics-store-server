@@ -5,7 +5,7 @@ module.exports.createProduct = async (req, res, next) => {
   const { body } = req;
   try {
     const createdProduct = await Product.create(body);
-    res.status(201).send(createdProduct);
+    res.status(201).send({ data: createdProduct });
   } catch (err) {
     next(err);
   }
@@ -20,11 +20,11 @@ module.exports.getProducts = async (req, res, next) => {
   }
   try {
     const foundProducts = await Product.find(filter)
-      .populate({ path: 'reviews' })
+      .select('-__v')
+      .populate({ path: 'reviews', select: ['-__v'] })
       .sort({ [sort]: 1 })
       .limit(limit)
       .skip(skip);
-
     res.status(200).send({ data: foundProducts });
   } catch (err) {
     next(err);
@@ -34,14 +34,16 @@ module.exports.getProducts = async (req, res, next) => {
 module.exports.getProductById = async (req, res, next) => {
   const { productId } = req.params;
   try {
-    const foundProduct = await Product.findById(productId).populate({
-      path: 'reviews',
-      select: ['-__v','-product'],
-      populate: {
-        path: 'customer',
-        select: 'name'
-      },
-    });
+    const foundProduct = await Product.findById(productId)
+      .populate({
+        path: 'reviews',
+        select: ['-__v', '-product'],
+        populate: {
+          path: 'customer',
+          select: 'name',
+        },
+      })
+      .select('-__v');
     if (!foundProduct) {
       return next(createHttpError(404, 'Product Not Found'));
     }
@@ -89,23 +91,6 @@ module.exports.deleteProductById = async (req, res, next) => {
   }
 };
 
-// module.exports.createProductReview = async (req, res, next) => {
-//   const {
-//     body,
-//     params: { customerId, productId },
-//   } = req;
-
-//   try {
-//     const createdReview = await Review.create({
-//       ...body,
-//       customer: customerId,
-//       product: productId,
-//     });
-//     res.status(201).send({ data: createdReview });
-//   } catch (err) {
-//     next(err);
-//   }
-// };
 module.exports.createProductReview = async (req, res, next) => {
   const {
     body,
@@ -126,13 +111,6 @@ module.exports.createProductReview = async (req, res, next) => {
     await Product.findByIdAndUpdate(productId, {
       $push: { reviews: createdReview._id },
     });
-    // const product = await Product.findById(productId);
-    // if (!product) {
-    //   return next(createHttpError(404, 'Product not found'));
-    // }
-
-    // product.reviews.push(createdReview._id);
-    // await product.save();
 
     res.status(201).send({ data: createdReview });
   } catch (err) {

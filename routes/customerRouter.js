@@ -14,4 +14,8 @@ customerRouter
   .patch(customerController.updatedCustomerById)
   .delete(customerController.deleteCustomerById);
 
+customerRouter
+  .route('/:customerId/wishlist')
+  .post(customerController.addToWishlist);
+
 module.exports = customerRouter;

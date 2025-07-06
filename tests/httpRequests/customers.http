@@ -38,3 +38,8 @@ DELETE  http://localhost:5000/api/customers/685b956124f3113734d5bc17
 ### 201
 
 POST http://localhost:5000/api/customers/685b995c0f1d91b7245f951a/wishlist/
+Content-Type: application/json
+
+{
+   "productId": "686aabe32534f5b1938b6c61"
+}

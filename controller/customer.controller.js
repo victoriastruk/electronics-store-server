@@ -93,13 +93,18 @@ module.exports.deleteCustomerById = async (req, res, next) => {
 };
 
 module.exports.addToWishlist = async (req, res, next) => {
-  const { customerId, productId } = req.params;
+  const {
+    body: { productId },
+    params: { customerId },
+  } = req;
   try {
     const updatedCustomer = await Customer.findByIdAndUpdate(
       customerId,
       { $addToSet: { wishlist: productId } },
-      { new: tue }
-    ).populate('wishlist');
+      { new: true }
+    )
+      .populate({ path: 'wishlist', select: ['-__v', '-reviews'] })
+      .select(['-password', '-__v']);
 
     if (!updatedCustomer) {
       return next(createHttpError(404, 'Customer Not Found'));
