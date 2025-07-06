@@ -2,8 +2,14 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const productSchema = new Schema({
-  name: String,
-  description: String,
+  name: {
+    type: String,
+    required: true,
+    minlength: 2,
+  },
+  description: {
+    type: String,
+  },
   category: {
     type: String,
     enum: [
@@ -13,10 +19,22 @@ const productSchema = new Schema({
       'tech accessories',
     ],
   },
-  price: Number,
-  stock: Number,
+  price: {
+    type: Number,
+    required: true,
+    min: 0,
+  },
+  stock: {
+    type: Number,
+    required: true,
+    min: 0,
+  },
   discount: {
-    percentage: Number,
+    percentage: {
+      type: Number,
+      min: 0,
+      max: 100,
+    },
     validUntil: Date,
   },
   reviews: [

@@ -13,6 +13,34 @@ Content-Type: application/json
       "country": "Ukraine"
    }
 }
+### 500
+POST http://localhost:5000/api/customers
+Content-Type: application/json
+
+{
+   "name": "Eva",
+   "email": "eva31@gmail.com"
+}
+
+### 422 
+POST http://localhost:5000/api/customers
+Content-Type: application/json
+
+{
+   "name": "Eva",
+   "email": "not-an-email",
+   "password": "12345"
+}
+
+### 409 
+POST http://localhost:5000/api/customers
+Content-Type: application/json
+
+{
+   "name": "Eva",
+   "email": "eva30@gmail.com",  
+   "password": "12345"
+}
 
 ### 200
 GET http://localhost:5000/api/customers
@@ -33,7 +61,7 @@ Content-Type: application/json
 }
 
 ### 204 
-DELETE  http://localhost:5000/api/customers/685b956124f3113734d5bc17
+DELETE  http://localhost:5000/api/customers/685b956124f3113734d4bc17
 
 ### 201
 

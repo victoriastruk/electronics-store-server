@@ -13,6 +13,20 @@ Content-Type: application/json
   "totalPrice": 199.99
 }
 
+### 422 
+POST http://localhost:5000/api/orders
+Content-Type: application/json
+
+{
+  "items": [
+   {
+      "product": "686aabe32534f5b1938b6c61",
+      "quantity": 2
+    }
+  ],
+  "total": 199.99
+}
+
 ###200
 GET http://localhost:5000/api/orders?limit=5&skip=0
 

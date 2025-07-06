@@ -5,16 +5,26 @@ const reviewSchema = new Schema({
   product: {
     type: Schema.Types.ObjectId,
     ref: 'Product',
+    required: true,
   },
   customer: {
     type: Schema.Types.ObjectId,
     ref: 'Customer',
+    required: true,
   },
-  rating: Number,
-  comment: String,
+  rating: {
+    type: Number,
+    required: true,
+    min: 1,
+    max: 5,
+  },
+  comment: {
+    type: String,
+    maxlength: 500,
+  },
   date: {
     type: Date,
-    default: new Date(),
+    default: Date.now,
   },
 });
 
